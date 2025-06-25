@@ -76,7 +76,7 @@ const ResumePage: React.FC = () => {
     },
   ];
 
-  const designSkills = [ 'Figma', 'Canva', 'Adobe XD', 'Adobe Photoshop' ];
+  const designSkills = ['Figma', 'Canva', 'Adobe XD', 'Adobe Photoshop'];
 
   const developmentSkills = [
     'HTML5', 'CSS', 'JavaScript', 'React.js', 'Node.js',
@@ -108,9 +108,9 @@ const ResumePage: React.FC = () => {
   return (
     <PageContainer
       title="Resume"
-      description="Professional experience, education, and skills of  Buddhi Jayawickrama, an IT undergraduate specializing in UI/UX and web development."
+      description="Professional experience, education, and skills of Buddhi Jayawickrama, an IT undergraduate specializing in UI/UX and web development."
     >
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#1A2A44] to-[#4A5B7C] dark:from-[#0D1B2A] dark:to-[#2A3B5A] text-white transition-colors duration-300">
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white transition-colors duration-300">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-10 sm:mb-12">
             <motion.div
@@ -118,11 +118,11 @@ const ResumePage: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white dark:text-white mb-3 sm:mb-4 leading-tight">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-3 sm:mb-4 leading-tight">
                 My Resume
               </h1>
-              <div className="w-16 h-1.5 bg-teal-300 dark:bg-teal-400 mb-5 sm:mb-6 rounded-full"></div>
-              <p className="text-base sm:text-lg text-gray-200 dark:text-gray-300 max-w-3xl">
+              <div className="w-16 h-1.5 bg-blue-500 mb-5 sm:mb-6 rounded-full"></div>
+              <p className="text-base sm:text-lg text-slate-300 max-w-3xl">
                 A passionate and detail-oriented IT undergraduate with a strong foundation in UI/UX design, UI/UX engineering, and full-stack web development. This resume highlights Buddhi Jayawickrama's academic projects, educational background, and technical expertise in building engaging, user-focused digital solutions.
               </p>
             </motion.div>
@@ -134,7 +134,7 @@ const ResumePage: React.FC = () => {
               className="mt-8 md:mt-0"
             >
               <a href="/Buddhi_resume.pdf" download>
-                <button className="inline-flex items-center px-6 py-3 bg-teal-500 dark:bg-teal-600 text-white hover:bg-teal-400 dark:hover:bg-teal-500 transition-all duration-300">
+                <button className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-sm hover:shadow-blue-500/20 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 rounded-md">
                   <Download className="mr-2 h-5 w-5" />
                   Download Resume
                 </button>
@@ -150,30 +150,30 @@ const ResumePage: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.3 }}
                 className="mb-12 sm:mb-16"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-white dark:text-white mb-6 flex items-center">
-                  <Briefcase className="mr-3 h-6 w-6 text-teal-300 dark:text-teal-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center">
+                  <Briefcase className="mr-3 h-6 w-6 text-blue-400" />
                   Projects & Experience
                 </h2>
 
-                <div className="space-y-8 relative before:absolute before:left-6 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-600 dark:before:via-gray-500 before:to-transparent">
+                <div className="space-y-8 relative before:absolute before:left-6 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-500/50 before:to-transparent">
                   {experiences.map((experience, index) => (
                     <div key={index} className="relative flex items-start group">
-                      <div className="absolute left-0 top-0 mt-2 z-10 p-2 bg-gray-700 dark:bg-gray-800 border border-gray-600 dark:border-gray-500 rounded-full shadow-md flex items-center justify-center">
-                        <Calendar className="h-5 w-5 text-teal-300 dark:text-teal-400" />
+                      <div className="absolute left-0 top-0 mt-2 z-10 p-2 bg-slate-900/80 border border-blue-500/30 rounded-full shadow-blue-500/20 flex items-center justify-center">
+                        <Calendar className="h-5 w-5 text-blue-400" />
                       </div>
                       <div className="flex-1 ml-14 md:ml-0 md:w-1/2 md:odd:pr-8 md:odd:text-right md:even:pl-8 md:even:text-left">
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.1 * index }}
-                          className="bg-gray-700 dark:bg-gray-800 p-5 rounded-lg shadow-sm border border-gray-600 dark:border-gray-500"
+                          className="bg-slate-900/80 p-5 rounded-lg shadow-blue-500/20 border border-blue-500/30"
                         >
-                          <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white mb-1">
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-1">
                             {experience.title}
                           </h3>
-                          <p className="text-gray-200 dark:text-gray-300 text-sm sm:text-base mb-1">{experience.company}</p>
-                          <p className="text-xs sm:text-sm font-medium text-teal-300 dark:text-teal-400 mb-3">{experience.period}</p>
-                          <p className="text-sm text-gray-200 dark:text-gray-300">{experience.description}</p>
+                          <p className="text-slate-300 text-sm sm:text-base mb-1">{experience.company}</p>
+                          <p className="text-xs sm:text-sm font-medium text-blue-400 mb-3">{experience.period}</p>
+                          <p className="text-sm text-slate-300">{experience.description}</p>
                         </motion.div>
                       </div>
                     </div>
@@ -186,28 +186,28 @@ const ResumePage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.4 }}
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-white dark:text-white mb-6 flex items-center">
-                  <GraduationCap className="mr-3 h-6 w-6 text-teal-300 dark:text-teal-400" />
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6 flex items-center">
+                  <GraduationCap className="mr-3 h-6 w-6 text-blue-400" />
                   Education
                 </h2>
 
-                <div className="space-y-8 relative before:absolute before:left-6 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-gray-600 dark:before:via-gray-500 before:to-transparent">
+                <div className="space-y-8 relative before:absolute before:left-6 md:before:left-1/2 before:-translate-x-1/2 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-blue-500/50 before:to-transparent">
                   {education.map((edu, index) => (
                     <div key={index} className="relative flex items-start group">
-                      <div className="absolute left-0 top-0 mt-2 z-10 p-2 bg-gray-700 dark:bg-gray-800 border border-gray-600 dark:border-gray-500 rounded-full shadow-md flex items-center justify-center">
-                        <GraduationCap className="h-5 w-5 text-teal-300 dark:text-teal-400" />
+                      <div className="absolute left-0 top-0 mt-2 z-10 p-2 bg-slate-900/80 border border-blue-500/30 rounded-full shadow-blue-500/20 flex items-center justify-center">
+                        <GraduationCap className="h-5 w-5 text-blue-400" />
                       </div>
                       <div className="flex-1 ml-14 md:ml-0 md:w-1/2 md:odd:pr-8 md:odd:text-right md:even:pl-8 md:even:text-left">
                         <motion.div
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           transition={{ duration: 0.5, delay: 0.1 * index }}
-                          className="bg-gray-700 dark:bg-gray-800 p-5 rounded-lg shadow-sm border border-gray-600 dark:border-gray-500"
+                          className="bg-slate-900/80 p-5 rounded-lg shadow-blue-500/20 border border-blue-500/30"
                         >
-                          <h3 className="text-lg sm:text-xl font-bold text-white dark:text-white mb-1">{edu.degree}</h3>
-                          <p className="text-gray-200 dark:text-gray-300 text-sm sm:text-base mb-1">{edu.institution}</p>
-                          <p className="text-xs sm:text-sm font-medium text-teal-300 dark:text-teal-400 mb-3">{edu.period}</p>
-                          <p className="text-sm text-gray-200 dark:text-gray-300">{edu.description}</p>
+                          <h3 className="text-lg sm:text-xl font-bold text-white mb-1">{edu.degree}</h3>
+                          <p className="text-slate-300 text-sm sm:text-base mb-1">{edu.institution}</p>
+                          <p className="text-xs sm:text-sm font-medium text-blue-400 mb-3">{edu.period}</p>
+                          <p className="text-sm text-slate-300">{edu.description}</p>
                         </motion.div>
                       </div>
                     </div>
@@ -223,16 +223,16 @@ const ResumePage: React.FC = () => {
                 transition={{ duration: 0.6, delay: 0.5 }}
                 className="mb-10 sm:mb-12"
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-white dark:text-white mb-6">Skills</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Skills</h2>
 
                 <div className="space-y-6">
                   <div>
-                    <h3 className="text-lg font-semibold text-white dark:text-white mb-3">Design</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Design</h3>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {designSkills.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1.5 bg-teal-300/30 dark:bg-teal-400/30 text-teal-300 dark:text-teal-400 rounded-full text-sm font-medium"
+                          className="px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium"
                         >
                           {skill}
                         </span>
@@ -241,12 +241,12 @@ const ResumePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white dark:text-white mb-3">Development</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Development</h3>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {developmentSkills.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1.5 bg-teal-300/30 dark:bg-teal-400/30 text-teal-300 dark:text-teal-400 rounded-full text-sm font-medium"
+                          className="px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium"
                         >
                           {skill}
                         </span>
@@ -255,12 +255,12 @@ const ResumePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white dark:text-white mb-3">Tools & Platforms</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Tools & Platforms</h3>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {toolsSkills.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1.5 bg-teal-300/30 dark:bg-teal-400/30 text-teal-300 dark:text-teal-400 rounded-full text-sm font-medium"
+                          className="px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium"
                         >
                           {skill}
                         </span>
@@ -269,12 +269,12 @@ const ResumePage: React.FC = () => {
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-white dark:text-white mb-3">Architecture</h3>
+                    <h3 className="text-lg font-semibold text-white mb-3">Architecture</h3>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       {architectureSkills.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1.5 bg-teal-300/30 dark:bg-teal-400/30 text-teal-300 dark:text-teal-400 rounded-full text-sm font-medium"
+                          className="px-3 py-1.5 bg-blue-500/20 text-blue-400 rounded-full text-sm font-medium"
                         >
                           {skill}
                         </span>
@@ -289,18 +289,18 @@ const ResumePage: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.7 }}
               >
-                <h2 className="text-2xl sm:text-3xl font-bold text-white dark:text-white mb-6">Languages</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">Languages</h2>
 
                 <div className="space-y-5">
                   {languages.map((lang, index) => (
                     <div key={index}>
                       <div className="flex justify-between items-end mb-1">
-                        <span className="text-gray-200 dark:text-gray-300 text-base sm:text-lg font-medium">{lang.name}</span>
-                        <span className="text-gray-200 dark:text-gray-300 text-sm sm:text-base">{lang.proficiency}</span>
+                        <span className="text-slate-400 text-base sm:text-lg font-medium">{lang.name}</span>
+                        <span className="text-slate-400 text-sm sm:text-base">{lang.proficiency}</span>
                       </div>
-                      <div className="w-full bg-gray-600 dark:bg-gray-500 rounded-full h-2">
+                      <div className="w-full bg-slate-700 rounded-full h-2">
                         <div
-                          className={`bg-teal-300 dark:bg-teal-400 h-full rounded-full transition-all duration-500 ease-out ${getProficiencyWidth(lang.proficiency)}`}
+                          className={`bg-blue-500 h-full rounded-full transition-all duration-500 ease-out ${getProficiencyWidth(lang.proficiency)}`}
                         ></div>
                       </div>
                     </div>

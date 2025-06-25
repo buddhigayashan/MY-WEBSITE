@@ -56,20 +56,20 @@ const ContactForm: React.FC = () => {
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
       {submissionStatus === 'success' && (
-        <div className="mb-6 p-4 bg-green-100 text-green-800 rounded-md flex items-center">
+        <div className="mb-6 p-4 bg-blue-600/20 text-blue-400 rounded-xl flex items-center">
           <Check className="h-5 w-5 mr-2" />
           <p>Your message has been sent successfully!</p>
         </div>
       )}
       {submissionStatus === 'error' && (
-        <div className="mb-6 p-4 bg-red-100 text-red-800 rounded-md flex items-center">
+        <div className="mb-6 p-4 bg-red-100 text-red-800 rounded-xl flex items-center">
           <AlertCircle className="h-5 w-5 mr-2" />
           <p>There was an error sending your message. Try again later.</p>
         </div>
       )}
       <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
         <div>
-          <label htmlFor="name" className="block text-sm font-medium text-white">Name</label>
+          <label htmlFor="name" className="block text-sm font-semibold text-white">Name</label>
           <input
             type="text"
             id="name"
@@ -77,12 +77,12 @@ const ContactForm: React.FC = () => {
             value={formState.name}
             onChange={handleChange}
             required
-            className="mt-1 w-full p-3 rounded-lg bg-gray-600 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-400"
+            className="mt-1 w-full p-3 rounded-lg bg-slate-800 text-white border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-slate-400"
             placeholder="Your name"
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-white">Email</label>
+          <label htmlFor="email" className="block text-sm font-semibold text-white">Email</label>
           <input
             type="email"
             id="email"
@@ -90,12 +90,12 @@ const ContactForm: React.FC = () => {
             value={formState.email}
             onChange={handleChange}
             required
-            className="mt-1 w-full p-3 rounded-lg bg-gray-600 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-400"
+            className="mt-1 w-full p-3 rounded-lg bg-slate-800 text-white border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-slate-400"
             placeholder="your.email@example.com"
           />
         </div>
         <div>
-          <label htmlFor="message" className="block text-sm font-medium text-white">Message</label>
+          <label htmlFor="message" className="block text-sm font-semibold text-white">Message</label>
           <textarea
             id="message"
             name="message"
@@ -103,7 +103,7 @@ const ContactForm: React.FC = () => {
             onChange={handleChange}
             required
             rows={5}
-            className="mt-1 w-full p-3 rounded-lg bg-gray-600 text-white border border-gray-500 focus:outline-none focus:ring-2 focus:ring-teal-400"
+            className="mt-1 w-full p-3 rounded-lg bg-slate-800 text-white border border-blue-500/30 focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder-slate-400"
             placeholder="Your message..."
           />
         </div>
@@ -111,7 +111,7 @@ const ContactForm: React.FC = () => {
           <button
             type="submit"
             disabled={isSubmitting}
-            className="w-full bg-teal-500 hover:bg-teal-600 text-white font-bold py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center"
+            className="w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-bold py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center hover:from-blue-700 hover:to-indigo-700 hover:shadow-blue-500/25 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900 disabled:opacity-50"
           >
             {isSubmitting ? (
               <>
@@ -136,13 +136,13 @@ const ContactForm: React.FC = () => {
 const ContactPage: React.FC = () => {
   const contactInfo = [
     {
-      icon: <Phone className="h-6 w-6" />,
+      icon: <Phone className="h-6 w-6 text-blue-400" />,
       title: 'Phone',
       content: '+94 717 071 306',
       href: 'tel:+94717071306',
     },
     {
-      icon: <Mail className="h-6 w-6" />,
+      icon: <Mail className="h-6 w-6 text-blue-400" />,
       title: 'Email',
       content: 'buddhigjayawickrama@gmail.com',
       href: 'mailto:buddhigjayawickrama@gmail.com',
@@ -154,29 +154,29 @@ const ContactPage: React.FC = () => {
       icon: <Github className="h-6 w-6 text-white" />,
       name: 'GitHub',
       href: 'https://github.com/buddhigayashan',
-      bgColor: 'bg-gray-800 dark:bg-gray-700',
-      hoverColor: 'hover:bg-black dark:hover:bg-gray-900',
+      bgColor: 'bg-slate-900/80 border border-blue-500/30',
+      hoverColor: 'hover:bg-slate-800/80 hover:shadow-blue-500/25',
     },
     {
       icon: <Linkedin className="h-6 w-6 text-white" />,
       name: 'LinkedIn',
       href: 'https://www.linkedin.com/in/buddhi-jayawickrama-a82007366/',
-      bgColor: 'bg-[#0A66C2]',
-      hoverColor: 'hover:bg-[#084D92]',
+      bgColor: 'bg-blue-600',
+      hoverColor: 'hover:bg-blue-700 hover:shadow-blue-500/25',
     },
     {
       icon: <Instagram className="h-6 w-6 text-white" />,
       name: 'Instagram',
       href: 'https://www.instagram.com/_b_u_d_d_h_i___g_a_y_a_s_h_a_n/',
-      bgColor: 'bg-gradient-to-br from-purple-500 via-pink-500 to-orange-500',
-      hoverColor: 'hover:from-purple-600 hover:via-pink-600 hover:to-orange-600',
+      bgColor: 'bg-indigo-600',
+      hoverColor: 'hover:bg-indigo-700 hover:shadow-blue-500/25',
     },
     {
       icon: <Facebook className="h-6 w-6 text-white" />,
       name: 'Facebook',
       href: 'https://www.facebook.com/buddhi.jayawickrama/',
-      bgColor: 'bg-[#1877F2]',
-      hoverColor: 'hover:bg-[#145CBF]',
+      bgColor: 'bg-blue-500',
+      hoverColor: 'hover:bg-blue-600 hover:shadow-blue-500/25',
     },
   ];
 
@@ -185,7 +185,8 @@ const ContactPage: React.FC = () => {
       title="Contact"
       description="Get in touch with me regarding your project or collaboration opportunities"
     >
-      <section className="py-16 sm:py-20 bg-gradient-to-br from-[#1A2A44] to-[#4A5B7C] dark:from-[#0D1B2A] dark:to-[#2A3B5A] text-white transition-colors duration-300">
+      <section className="py-16 sm:py-20 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white transition-colors duration-300">
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/30 via-transparent to-blue-900/20" style={{ zIndex: 2 }} />
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -193,30 +194,30 @@ const ContactPage: React.FC = () => {
             transition={{ duration: 0.7 }}
             className="max-w-3xl mx-auto text-center mb-12 sm:mb-16"
           >
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-4 leading-tight tracking-tight">
+            <h1 className="text-4xl sm:text-5xl font-black bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-4 leading-tight tracking-tight">
               Get In Touch
             </h1>
             <motion.div
-              className="w-28 h-1.5 bg-teal-300 mx-auto mb-6 rounded-full opacity-90"
+              className="w-28 h-1.5 bg-blue-500 mx-auto mb-6 rounded-full opacity-90"
               initial={{ scaleX: 0 }}
               animate={{ scaleX: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
               style={{ transformOrigin: 'center' }}
             />
-            <p className="text-base sm:text-xl text-gray-200 font-medium">
+            <p className="text-base sm:text-xl text-slate-300 font-medium leading-relaxed">
               Have a project in mind or want to collaborate? I'd love to hear
               from you. Feel free to reach out using the form below or through
               my social media channels.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="space-y-10 sm:space-y-12 p-6 sm:p-8 bg-gray-700 dark:bg-gray-800 rounded-xl shadow-lg border border-gray-600"
+              className="space-y-10 sm:space-y-12 p-6 sm:p-8 bg-slate-900/80 rounded-xl shadow-blue-500/20 border border-blue-500/30 backdrop-blur-xl"
             >
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
@@ -235,16 +236,16 @@ const ContactPage: React.FC = () => {
                       }}
                       className="flex items-center group transform transition-transform duration-300 hover:scale-[1.02]"
                     >
-                      <div className="mr-4 p-3 bg-teal-300/30 rounded-full text-teal-300 flex-shrink-0">
+                      <div className="mr-4 p-3 bg-blue-500/20 rounded-full flex-shrink-0">
                         {item.icon}
                       </div>
                       <div>
-                        <h3 className="text-lg font-medium text-white mb-0.5">
+                        <h3 className="text-lg font-semibold text-white mb-0.5">
                           {item.title}
                         </h3>
                         <a
                           href={item.href}
-                          className="text-gray-200 hover:text-teal-300 transition-colors duration-300"
+                          className="text-slate-300 hover:text-blue-400 transition-colors duration-300"
                         >
                           {item.content}
                         </a>
@@ -276,7 +277,7 @@ const ContactPage: React.FC = () => {
                         stiffness: 260,
                         damping: 20,
                       }}
-                      className={`p-3 rounded-full shadow-lg flex items-center justify-center transition-all duration-300 ${item.bgColor} ${item.hoverColor}`}
+                      className={`p-3 rounded-full shadow-sm transition-all duration-300 ${item.bgColor} ${item.hoverColor}`}
                       aria-label={item.name}
                     >
                       {item.icon}
@@ -291,7 +292,7 @@ const ContactPage: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.3 }}
               transition={{ duration: 0.7, ease: 'easeOut' }}
-              className="p-6 sm:p-8 bg-[#2A3B5A] rounded-xl shadow-lg border border-gray-600"
+              className="p-6 sm:p-8 bg-slate-900/80 rounded-xl shadow-blue-500/20 border border-blue-500/30 backdrop-blur-xl"
             >
               <ContactForm />
             </motion.div>

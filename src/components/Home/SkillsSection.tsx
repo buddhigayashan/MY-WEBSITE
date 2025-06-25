@@ -6,7 +6,7 @@ import * as LucideIcons from "lucide-react";
 
 type SkillCategory = "development" | "design" | "other";
 
-const SpaceBackground: React.FC = () => {
+const SpaceBackground3D: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationFrameId = useRef<number>();
 
@@ -14,7 +14,7 @@ const SpaceBackground: React.FC = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     // Set canvas size
@@ -23,7 +23,7 @@ const SpaceBackground: React.FC = () => {
       canvas.height = window.innerHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    window.addEventListener("resize", resizeCanvas);
 
     // Stars configuration
     const stars: Array<{
@@ -46,7 +46,7 @@ const SpaceBackground: React.FC = () => {
       drift: { x: number; y: number };
     }> = [];
 
-    // Initialize stars with reduced intensity
+    // Initialize stars
     for (let i = 0; i < 400; i++) {
       stars.push({
         x: Math.random() * canvas.width,
@@ -59,14 +59,14 @@ const SpaceBackground: React.FC = () => {
       });
     }
 
-    // Initialize nebula particles with reduced count and intensity
+    // Initialize nebula particles with HeroSection colors
     for (let i = 0; i < 80; i++) {
       nebulaParticles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
         radius: Math.random() * 60 + 15,
         opacity: Math.random() * 0.06 + 0.01,
-        color: ['#1A2A44', '#4A5B7C', '#2dd4bf', '#0f172a'][Math.floor(Math.random() * 4)],
+        color: ["#4338ca", "#1e40af", "#0f172a", "#374151"][Math.floor(Math.random() * 4)],
         drift: {
           x: (Math.random() - 0.5) * 0.2,
           y: (Math.random() - 0.5) * 0.2,
@@ -80,7 +80,7 @@ const SpaceBackground: React.FC = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       time += 0.008;
 
-      // Draw nebula particles with reduced opacity
+      // Draw nebula particles
       nebulaParticles.forEach((particle) => {
         particle.x += particle.drift.x;
         particle.y += particle.drift.y;
@@ -92,11 +92,18 @@ const SpaceBackground: React.FC = () => {
         if (particle.y > canvas.height + particle.radius) particle.y = -particle.radius;
 
         const gradient = ctx.createRadialGradient(
-          particle.x, particle.y, 0,
-          particle.x, particle.y, particle.radius
+          particle.x,
+          particle.y,
+          0,
+          particle.x,
+          particle.y,
+          particle.radius
         );
-        gradient.addColorStop(0, `${particle.color}${Math.floor(particle.opacity * 255).toString(16).padStart(2, '0')}`);
-        gradient.addColorStop(1, 'transparent');
+        gradient.addColorStop(
+          0,
+          `${particle.color}${Math.floor(particle.opacity * 255).toString(16).padStart(2, "0")}`
+        );
+        gradient.addColorStop(1, "transparent");
 
         ctx.fillStyle = gradient;
         ctx.beginPath();
@@ -104,7 +111,7 @@ const SpaceBackground: React.FC = () => {
         ctx.fill();
       });
 
-      // Draw stars with reduced glow and teal color matching
+      // Draw stars with HeroSection colors
       stars.forEach((star) => {
         star.z -= 1.5;
         if (star.z <= 0) {
@@ -116,39 +123,39 @@ const SpaceBackground: React.FC = () => {
         const x = (star.x - canvas.width / 2) * (200 / star.z) + canvas.width / 2;
         const y = (star.y - canvas.height / 2) * (200 / star.z) + canvas.height / 2;
         const radius = star.radius * (200 / star.z);
-        
-        // Twinkling effect with reduced intensity
+
+        // Twinkling effect
         const twinkle = Math.sin(time * star.twinkleSpeed + star.twinkleOffset) * 0.2 + 0.8;
         const opacity = star.opacity * twinkle * (200 / star.z);
 
         if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
-          // Reduced glow effect with teal color
+          // Glow effect with blue color
           const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 2);
-          gradient.addColorStop(0, `rgba(45, 212, 191, ${opacity * 0.4})`);
-          gradient.addColorStop(0.5, `rgba(45, 212, 191, ${opacity * 0.15})`);
-          gradient.addColorStop(1, 'transparent');
+          gradient.addColorStop(0, `rgba(59, 130, 246, ${opacity * 0.4})`);
+          gradient.addColorStop(0.5, `rgba(59, 130, 246, ${opacity * 0.15})`);
+          gradient.addColorStop(1, "transparent");
 
           ctx.fillStyle = gradient;
           ctx.beginPath();
           ctx.arc(x, y, radius * 2, 0, Math.PI * 2);
           ctx.fill();
 
-          // Draw star core with white/teal blend
-          ctx.fillStyle = `rgba(220, 255, 250, ${opacity})`;
+          // Draw star core with white
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
           ctx.beginPath();
           ctx.arc(x, y, Math.max(radius, 0.4), 0, Math.PI * 2);
           ctx.fill();
         }
       });
 
-      // Reduced cosmic dust with teal color
+      // Cosmic dust with HeroSection blue color
       const dustCount = 50;
       for (let i = 0; i < dustCount; i++) {
         const dustX = (Math.sin(time * 0.4 + i) * canvas.width / 5) + canvas.width / 2;
         const dustY = (Math.cos(time * 0.25 + i * 0.08) * canvas.height / 8) + canvas.height / 2;
         const dustOpacity = (Math.sin(time * 1.5 + i) + 1) * 0.05;
 
-        ctx.fillStyle = `rgba(45, 212, 191, ${dustOpacity})`;
+        ctx.fillStyle = `rgba(59, 130, 246, ${dustOpacity})`;
         ctx.beginPath();
         ctx.arc(dustX, dustY, 0.8, 0, Math.PI * 2);
         ctx.fill();
@@ -160,7 +167,7 @@ const SpaceBackground: React.FC = () => {
     animate();
 
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
+      window.removeEventListener("resize", resizeCanvas);
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
@@ -255,11 +262,15 @@ const SkillsSection: React.FC = () => {
   };
 
   return (
-    <section id="skills" className="relative py-24 bg-gradient-to-br from-[#1A2A44] to-[#4A5B7C] dark:from-[#0D1B2A] dark:to-[#2A3B5A] text-white overflow-hidden">
-      <SpaceBackground />
-      
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2dd4bf]/3 to-transparent animate-pulse opacity-60" style={{ zIndex: 2 }} />
-      
+    <section
+      id="skills"
+      className="relative py-24 bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 text-white overflow-hidden"
+    >
+      <SpaceBackground3D />
+      <div
+        className="absolute inset-0 bg-gradient-to-r from-transparent via-blue-900/20 to-transparent animate-pulse opacity-60"
+        style={{ zIndex: 2 }}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative" style={{ zIndex: 10 }}>
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -268,11 +279,11 @@ const SkillsSection: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="max-w-3xl mx-auto text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold text-white dark:text-white mb-4">
-            My <span className="text-teal-300 dark:text-teal-400">Technical</span> Toolkit
+          <h2 className="text-4xl sm:text-5xl font-bold bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent mb-4">
+            My <span className="text-blue-300">Technical</span> Toolkit
           </h2>
-          <div className="w-32 h-1.5 bg-teal-300 dark:bg-teal-400 mx-auto mb-6 rounded-full" />
-          <p className="text-lg sm:text-xl text-gray-200 dark:text-gray-300 font-medium">
+          <div className="w-32 h-1.5 bg-blue-300 mx-auto mb-6 rounded-full" />
+          <p className="text-lg sm:text-xl text-slate-300 font-medium">
             A comprehensive set of proficiencies, from core programming
             languages and robust frameworks to essential development tools and
             creative design platforms.
@@ -289,7 +300,7 @@ const SkillsSection: React.FC = () => {
           <div
             role="tablist"
             className="grid grid-cols-2 gap-3 sm:flex sm:flex-nowrap sm:overflow-x-auto scrollbar-hide
-               bg-gray-700 dark:bg-gray-800 p-2.5 rounded-3xl shadow-lg border border-gray-600 dark:border-gray-500"
+               bg-slate-900/80 p-2.5 rounded-3xl shadow-lg border border-blue-500/30"
           >
             {categories.map((cat) => (
               <button
@@ -299,14 +310,14 @@ const SkillsSection: React.FC = () => {
                 }
                 className={`relative px-4 py-2.5 rounded-3xl text-base sm:text-lg font-semibold text-center transition-colors duration-300 whitespace-nowrap ${
                   activeCategory === cat.value
-                    ? "text-white dark:text-white"
-                    : "text-gray-200 dark:text-gray-300 hover:text-teal-300 dark:hover:text-teal-400"
+                    ? "text-white"
+                    : "text-slate-300 hover:text-blue-300"
                 }`}
               >
                 {activeCategory === cat.value && (
                   <motion.span
                     layoutId="activeCategoryPill"
-                    className="absolute inset-0 bg-teal-500 dark:bg-teal-600 rounded-3xl -z-1"
+                    className="absolute inset-0 bg-blue-500 rounded-3xl -z-1"
                     transition={{ type: "spring", stiffness: 300, damping: 30 }}
                   />
                 )}
@@ -322,23 +333,23 @@ const SkillsSection: React.FC = () => {
               <button
                 onClick={handlePrevPage}
                 disabled={currentPage === 0}
-                className={`absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 rounded-full bg-gray-700/80 dark:bg-gray-800/80 shadow-lg border border-gray-600 dark:border-gray-500
-                  transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-400
+                className={`absolute -left-2 sm:left-0 top-1/2 -translate-y-1/2 z-20 rounded-full bg-slate-900/80 shadow-lg border border-blue-500/30
+                  transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500
                   ${currentPage === 0 ? "opacity-50 cursor-not-allowed" : "opacity-100"}`}
                 aria-label="Previous skills"
               >
-                <LucideIcons.ChevronLeft className="w-7 h-7 text-gray-200 dark:text-gray-300" />
+                <LucideIcons.ChevronLeft className="w-7 h-7 text-slate-300" />
               </button>
 
               <button
                 onClick={handleNextPage}
                 disabled={currentPage >= totalPages - 1}
-                className={`absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 rounded-full bg-gray-700/80 dark:bg-gray-800/80 shadow-lg border border-gray-600 dark:border-gray-500
-                  transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-400
+                className={`absolute -right-2 sm:right-0 top-1/2 -translate-y-1/2 z-20 rounded-full bg-slate-900/80 shadow-lg border border-blue-500/30
+                  transition-all duration-300 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-blue-500
                   ${currentPage >= totalPages - 1 ? "opacity-50 cursor-not-allowed" : "opacity-100"}`}
                 aria-label="Next skills"
               >
-                <LucideIcons.ChevronRight className="w-7 h-7 text-gray-200 dark:text-gray-300" />
+                <LucideIcons.ChevronRight className="w-7 h-7 text-slate-300" />
               </button>
             </>
           )}
@@ -366,7 +377,7 @@ const SkillsSection: React.FC = () => {
                 key="no-skills"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="col-span-full text-center py-12 text-gray-200 dark:text-gray-300 text-xl font-medium"
+                className="col-span-full text-center py-12 text-slate-300 text-xl font-medium"
               >
                 No skills found for this category.
               </motion.div>
@@ -381,8 +392,8 @@ const SkillsSection: React.FC = () => {
                   onClick={() => setCurrentPage(index)}
                   className={`w-3 h-3 rounded-full transition-colors duration-300 ${
                     currentPage === index
-                      ? "bg-teal-300 dark:bg-teal-400"
-                      : "bg-gray-600 dark:bg-gray-500 hover:bg-teal-400 dark:hover:bg-teal-500"
+                      ? "bg-blue-300"
+                      : "bg-slate-600 hover:bg-blue-400"
                   }`}
                   aria-label={`Go to skill page ${index + 1}`}
                 />

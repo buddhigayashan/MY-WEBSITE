@@ -84,7 +84,7 @@ const SpaceBackground3D: React.FC<{ onPhotoReveal: () => void }> = ({ onPhotoRev
         y: Math.random() * canvas.height,
         radius: Math.random() * 60 + 15,
         opacity: Math.random() * 0.06 + 0.01,
-        color: ['#1A2A44', '#4A5B7C', '#2dd4bf', '#0f172a'][Math.floor(Math.random() * 4)],
+        color: ['#4338ca', '#1e40af', '#0f172a', '#374151'][Math.floor(Math.random() * 4)], // Darker, more masculine colors
         drift: {
           x: (Math.random() - 0.5) * 0.2,
           y: (Math.random() - 0.5) * 0.2,
@@ -149,17 +149,7 @@ const SpaceBackground3D: React.FC<{ onPhotoReveal: () => void }> = ({ onPhotoRev
         const opacity = star.opacity * twinkle * (200 / star.z);
 
         if (x >= 0 && x <= canvas.width && y >= 0 && y <= canvas.height) {
-          const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 2);
-          gradient.addColorStop(0, `rgba(45, 212, 191, ${opacity * 0.4})`);
-          gradient.addColorStop(0.5, `rgba(45, 212, 191, ${opacity * 0.15})`);
-          gradient.addColorStop(1, 'transparent');
-
-          ctx.fillStyle = gradient;
-          ctx.beginPath();
-          ctx.arc(x, y, radius * 2, 0, Math.PI * 2);
-          ctx.fill();
-
-          ctx.fillStyle = `rgba(220, 255, 250, ${opacity})`;
+          ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
           ctx.beginPath();
           ctx.arc(x, y, Math.max(radius, 0.4), 0, Math.PI * 2);
           ctx.fill();
@@ -172,7 +162,7 @@ const SpaceBackground3D: React.FC<{ onPhotoReveal: () => void }> = ({ onPhotoRev
         const dustY = (Math.cos(time * 0.25 + i * 0.08) * canvas.height / 8) + canvas.height / 2;
         const dustOpacity = (Math.sin(time * 1.5 + i) + 1) * 0.05;
 
-        ctx.fillStyle = `rgba(45, 212, 191, ${dustOpacity})`;
+        ctx.fillStyle = `rgba(67, 56, 202, ${dustOpacity})`; // Darker blue dust
         ctx.beginPath();
         ctx.arc(dustX, dustY, 0.8, 0, Math.PI * 2);
         ctx.fill();
@@ -196,7 +186,7 @@ const SpaceBackground3D: React.FC<{ onPhotoReveal: () => void }> = ({ onPhotoRev
         ctx.beginPath();
         meteor.tail.forEach((point, index) => {
           ctx.lineTo(point.x, point.y);
-          ctx.strokeStyle = `rgba(255, 255, 255, ${point.opacity * 0.5})`;
+          ctx.strokeStyle = `rgba(59, 130, 246, ${point.opacity * 0.8})`; // Blue meteor tail
           ctx.lineWidth = 2 - (index / meteor.tail.length) * 1.5;
           if (index === 0) ctx.moveTo(point.x, point.y);
           else ctx.lineTo(point.x, point.y);
@@ -205,8 +195,8 @@ const SpaceBackground3D: React.FC<{ onPhotoReveal: () => void }> = ({ onPhotoRev
 
         // Draw meteor core
         const gradient = ctx.createRadialGradient(meteor.x, meteor.y, 0, meteor.x, meteor.y, 5);
-        gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
-        gradient.addColorStop(1, 'rgba(45, 212, 191, 0)');
+        gradient.addColorStop(0, 'rgba(255, 255, 255, 0.9)');
+        gradient.addColorStop(1, 'rgba(59, 130, 246, 0)');
         ctx.fillStyle = gradient;
         ctx.beginPath();
         ctx.arc(meteor.x, meteor.y, 5, 0, Math.PI * 2);
@@ -249,10 +239,10 @@ const SpaceBackground3D: React.FC<{ onPhotoReveal: () => void }> = ({ onPhotoRev
           particle.life -= 0.02;
           particle.opacity = particle.life;
 
-          const gradient = ctx.createRadialGradient(particle.x, particle.y, 0, particle.x, particle.y, particle.radius);
-          gradient.addColorStop(0, `rgba(255, 255, 255, ${particle.opacity})`);
-          gradient.addColorStop(1, `rgba(45, 212, 191, ${particle.opacity * 0.5})`);
-          ctx.fillStyle = gradient;
+          const colors = ['#3b82f6', '#1e40af', '#4338ca']; // Blue explosion colors
+          const color = colors[Math.floor(Math.random() * colors.length)];
+          
+          ctx.fillStyle = `${color}${Math.floor(particle.opacity * 255).toString(16).padStart(2, '0')}`;
           ctx.beginPath();
           ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
           ctx.fill();
@@ -323,106 +313,7 @@ const HeroSection: React.FC = () => {
   }, []);
 
   return (
-    <section
-      className="relative min-h-screen flex items-center bg-gradient-to-br from-[#1A2A44] to-[#4A5B7C] dark:from-[#0D1B2A] dark:to-[#2A3B5A] overflow-hidden py-16 sm:py-20 md:py-0"
-      aria-label="Hero Section"
-    >
-      <SpaceBackground3D onPhotoReveal={() => setShowPhoto(true)} />
-      
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#2dd4bf]/3 to-transparent animate-pulse opacity-60" style={{ zIndex: 2 }} />
-      
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
-        <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-y-12 md:gap-x-20">
-          <div className="w-full md:w-1/2 text-center md:text-left max-w-3xl">
-            <motion.h2
-              className="text-xl sm:text-2xl font-semibold uppercase tracking-widest text-teal-300 dark:text-teal-400 mb-5"
-              initial="hidden"
-              animate="visible"
-              custom={1}
-              variants={textVariants}
-              style={{
-                filter: "drop-shadow(0 0 2px rgb(45 212 191 / 0.6))",
-              }}
-            >
-              Hello, I'm Buddhi
-            </motion.h2>
-
-            <motion.h1
-              className="text-4xl sm:text-5xl font-extrabold leading-tight bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-300 bg-clip-text text-transparent animate-gradient-x mb-8"
-              initial="hidden"
-              animate="visible"
-              custom={2}
-              variants={textVariants}
-              style={{
-                WebkitTextFillColor: "transparent",
-                filter: "drop-shadow(0 2px 4px rgb(45 212 191 / 0.5))",
-              }}
-            >
-              <span ref={typedElement} aria-live="polite" />
-            </motion.h1>
-
-            <motion.p
-              className="text-lg sm:text-xl leading-relaxed text-gray-300 dark:text-gray-400 max-w-xl mx-auto md:mx-0 tracking-wide font-sans"
-              initial="hidden"
-              animate="visible"
-              custom={3}
-              variants={textVariants}
-            >
-              I design and engineer <span className="text-teal-300 font-semibold">scalable</span>, <span className="text-cyan-300 font-semibold">performance-driven</span> digital solutions – combining architectural precision with user-centric interfaces to create products that scale, engage, and lead.
-            </motion.p>
-
-            <motion.div
-              className="flex flex-col sm:flex-row justify-center md:justify-start gap-5 mt-10"
-              initial="hidden"
-              animate="visible"
-              custom={4}
-              variants={textVariants}
-            >
-              <Button
-                variant="primary"
-                size="lg"
-                to="/projects"
-                className="bg-teal-500 dark:bg-teal-600 text-white hover:bg-teal-400 dark:hover:bg-teal-500 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
-              >
-                View Projects
-              </Button>
-              <a
-                href="/Buddhi_resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                download
-                className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold border border-gray-600 dark:border-gray-500 text-white dark:text-gray-300 rounded-md shadow-sm transition-all duration-300 hover:bg-gray-600 dark:hover:bg-gray-700 hover:shadow-md focus:outline-none focus:ring-2 focus:ring-teal-500 dark:focus:ring-teal-400 focus:ring-offset-2 dark:focus:ring-offset-[#0D1B2A]"
-              >
-                <Download className="w-6 h-6 mr-2" />
-                Download Resume
-              </a>
-            </motion.div>
-          </div>
-
-          <div className="w-full md:w-1/2 flex justify-center order-first md:order-last">
-            <motion.div
-              className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden shadow-2xl dark:shadow-[0_0_20px_rgb(45,212,191,0.6)]"
-              initial={{ opacity: 0, scale: 0.75 }}
-              animate={{ opacity: showPhoto ? 1 : 0, scale: showPhoto ? 1 : 0.75 }}
-              transition={{ duration: 0.8, ease: "easeOut" }}
-              whileHover={{ scale: showPhoto ? 1.05 : 1 }}
-              aria-label="Buddhi's Profile Picture"
-              role="img"
-            >
-              <div
-                className="absolute inset-0 rounded-full bg-gradient-to-br from-teal-400/30 via-cyan-400/20 to-teal-400/30 blur-xl"
-                aria-hidden="true"
-              />
-              <img
-                src={hero}
-                alt="Buddhi - Full-Stack Developer"
-                className="relative rounded-full object-cover w-full h-full"
-              />
-            </motion.div>
-          </div>
-        </div>
-      </div>
-
+    <>
       <style>
         {`
           @keyframes gradient-x {
@@ -439,7 +330,127 @@ const HeroSection: React.FC = () => {
           }
         `}
       </style>
-    </section>
+      
+      <section
+        className="relative min-h-screen flex items-center bg-gradient-to-br from-slate-900 via-gray-900 to-slate-900 overflow-hidden py-16 sm:py-20 md:py-0"
+        aria-label="Hero Section"
+      >
+        <SpaceBackground3D onPhotoReveal={() => setShowPhoto(true)} />
+        
+        {/* Modern gradient overlay - darker, more masculine */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/30 via-transparent to-blue-900/20" style={{ zIndex: 2 }} />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-slate-900/20 to-slate-900/40" style={{ zIndex: 2 }} />
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative z-10">
+          <div className="flex flex-col-reverse md:flex-row items-center justify-center gap-y-12 md:gap-x-20">
+            <div className="w-full md:w-1/2 text-center md:text-left max-w-3xl">
+              <motion.div
+                className="inline-block mb-5"
+                initial="hidden"
+                animate="visible"
+                custom={1}
+                variants={textVariants}
+              >
+                <span className="px-4 py-2 bg-gradient-to-r from-blue-600/20 to-indigo-600/20 border border-blue-500/30 rounded-full text-sm font-medium text-blue-300 backdrop-blur-sm">
+                  👋 Hello, I'm Buddhi
+                </span>
+              </motion.div>
+
+              <motion.h1
+                className="text-4xl sm:text-5xl font-extrabold leading-tight bg-gradient-to-r from-blue-400 via-indigo-400 to-cyan-400 bg-clip-text text-transparent animate-gradient-x mb-8"
+                initial="hidden"
+                animate="visible"
+                custom={2}
+                variants={textVariants}
+              >
+                <span ref={typedElement} aria-live="polite" />
+              </motion.h1>
+
+              <motion.p
+                className="text-lg sm:text-xl leading-relaxed text-slate-300 max-w-xl mx-auto md:mx-0 tracking-wide font-light"
+                initial="hidden"
+                animate="visible"
+                custom={3}
+                variants={textVariants}
+              >
+                I design and engineer{" "}
+                <span className="text-blue-400 font-semibold bg-blue-400/10 px-2 py-1 rounded">
+                  scalable
+                </span>
+                ,{" "}
+                <span className="text-indigo-400 font-semibold bg-indigo-400/10 px-2 py-1 rounded">
+                  performance-driven
+                </span>{" "}
+                digital solutions – combining architectural precision with user-centric interfaces to create products that scale, engage, and lead.
+              </motion.p>
+
+              <motion.div
+                className="flex flex-col sm:flex-row justify-center md:justify-start gap-5 mt-10"
+                initial="hidden"
+                animate="visible"
+                custom={4}
+                variants={textVariants}
+              >
+                <Button
+                  variant="primary"
+                  size="lg"
+                  to="/projects"
+                  className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white shadow-lg hover:shadow-2xl hover:shadow-blue-500/25 border-0 font-semibold"
+                >
+                  View Projects
+                </Button>
+                <a
+                  href="/Buddhi_resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  download
+                  className="inline-flex items-center justify-center px-6 py-3 text-lg font-semibold border border-slate-600 hover:border-blue-500 text-slate-300 hover:text-white rounded-lg shadow-sm transition-all duration-300 hover:bg-slate-800/50 hover:shadow-lg backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-slate-900"
+                >
+                  <Download className="w-6 h-6 mr-2" />
+                  Download Resume
+                </a>
+              </motion.div>
+            </div>
+
+            <div className="w-full md:w-1/2 flex justify-center order-first md:order-last">
+              <motion.div
+                className="relative group"
+                initial={{ opacity: 0, scale: 0.75 }}
+                animate={{ opacity: showPhoto ? 1 : 0, scale: showPhoto ? 1 : 0.75 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                whileHover={{ scale: showPhoto ? 1.05 : 1 }}
+                aria-label="Buddhi's Profile Picture"
+                role="img"
+              >
+                {/* Animated background elements - more masculine colors */}
+                <div className="absolute -inset-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-cyan-600 rounded-full blur-2xl opacity-30 group-hover:opacity-40 transition-opacity duration-300" />
+                <div className="absolute -inset-2 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full blur-xl opacity-40 group-hover:opacity-50 transition-opacity duration-300" />
+                
+                {/* Main photo container */}
+                <div className="relative w-64 h-64 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-blue-500/30 group-hover:border-blue-400/40 transition-all duration-300 shadow-2xl">
+                  {/* Inner glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 via-transparent to-indigo-400/20 rounded-full" />
+                  
+                  <img
+                    src={hero}
+                    alt="Buddhi - Full-Stack Developer"
+                    className="relative w-full h-full object-cover rounded-full transition-transform duration-300 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  
+                  {/* Overlay effects */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/20 via-transparent to-transparent rounded-full" />
+                </div>
+                
+                {/* Floating elements - masculine blue tones */}
+                <div className="absolute -top-6 -right-6 w-4 h-4 bg-blue-500 rounded-full animate-ping" />
+                <div className="absolute -bottom-4 -left-4 w-3 h-3 bg-indigo-500 rounded-full animate-pulse" />
+              </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
