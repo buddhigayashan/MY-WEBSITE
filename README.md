@@ -65,7 +65,7 @@ I specialize in:
 
 ## 📫 Contact Me
 
-- 🌐 **Website**: _[Coming Soon]_  
+- 🌐 **Website**: _ https://buddhigayashan.netlify.app/
 - 🔗 **LinkedIn**: [linkedin.com/in/buddhi-jayawickrama-a82007366](https://www.linkedin.com/in/buddhi-jayawickrama-a82007366)  
 - 📱 **Phone**: `0717071306`  
 - 📧 **Email**: [buddhigjayawickrama@gmail.com](mailto:buddhigjayawickrama@gmail.com)
