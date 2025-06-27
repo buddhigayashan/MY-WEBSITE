@@ -36,18 +36,7 @@ Whether you're on **mobile** or **desktop**, the site is:
 
 ---
 
-## 🌟 Featured Projects
-
-- 🛍️ **E-Commerce Platform**  
-  _A modern shopping experience featuring dynamic filtering and secure payment integration._
-
-- 📊 **Task Management System**  
-  _A full-stack productivity app with real-time collaboration and task tracking._
-
-- 🎨 **Creative Portfolio Hub**  
-  _A platform for artists and designers with beautiful, interactive galleries._
-
----
+ 
 
 ## 🙋‍♂️ About Me
 
