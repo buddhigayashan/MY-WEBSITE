@@ -74,9 +74,84 @@ This solution was developed using **React.js** for the frontend, styled with **T
     ],
     githubLink: "https://github.com/buddhigayashan/CEY-COIR-COMPANY.git",
   },
+
+
+{
+  id: "3",
+  title: "🎉 Happy Birthday Website 💕",
+  slug: "birthday-gift-website",
+  description:
+    "A personalized React-based birthday website with AI replies, elegant animations, and hidden surprises. Voice navigation and gallery are locked for privacy.",
+  videoThumbnail: "/videos/birthdayWebsite.mp4",
+  poster: "/images/birthdaySiteCover.png",
+
+  tools: [
+    "React.js",
+    "JavaScript (ES6+)",
+    "CSS3",
+    "Voice Recognition API",
+    "Dialogflow",
+    "TensorFlow.js"
+  ],
+  content: `# 🎉 Happy Birthday Website 💕
+
+A heartfelt birthday website created with love for the most amazing person in my life. Developed with **React.js**, this emotionally engaging site features smooth animations, AI-powered replies, custom themes, and surprise interactions.
+
+🔒 **Note**: Voice navigation and gallery are currently locked for privacy.
+
+## 🌟 UI/UX Highlights
+- Custom color palette inspired by her favorite colors
+- Mobile-first responsive layout
+- Emotion-driven design: fonts, spacing, and visuals made to feel warm and inviting
+- Subtle microinteractions and transitions for delightful engagement
+
+## 🎈 Key Features
+- Personalized birthday message sections
+- Elegant birthday animations
+- Interactive surprises (Easter eggs)
+- AI-powered response system (using Dialogflow)
+- Locked Gallery (private memories)
+- Locked Voice Navigation
+
+## 🛠️ Technical Stack
+- Frontend: **React.js**, **CSS3**, **JavaScript**
+- AI & Voice: **Dialogflow**, **TensorFlow.js**, **Voice Recognition APIs**
+- Deployment: **Vercel**
+- Version Control: **GitHub**
+
+## 🚀 Live Demo
+[🌐 View Live Site](https://birthday-gift-seven-xi.vercel.app/)
+
+## 👨‍💻 GitHub Repository
+[🔗 Source Code](https://github.com/buddhigayashan/birthday-gift)
+
+## 🧩 Future Plans
+This concept will evolve into a platform where anyone can create custom, love-filled celebration websites using drag-and-drop tools, AI-generated wishes, and privacy options.
+
+## 📫 Contact Me
+- 🌐 Portfolio: [buddhigayashan.netlify.app](https://buddhigayashan.netlify.app)
+- 📧 Email: buddhigjayawickrama@gmail.com
+- 📱 Phone: 0717071306
+- 🔗 LinkedIn: [linkedin.com/in/buddhi-jayawickrama-a82007366](https://linkedin.com/in/buddhi-jayawickrama-a82007366)
+`,
+  images: ["/images/birthdaySiteCover.png"],
+  features: [
+    "Custom themed layout",
+    "AI-powered interactions",
+    "Locked photo gallery",
+    "Locked voice control",
+    "Surprise Easter eggs",
+    "Mobile responsive design"
+  ],
+  githubLink: "https://github.com/buddhigayashan/birthday-gift",
+  liveLink: "https://birthday-gift-seven-xi.vercel.app/"
+}
+
+  ,
+
   
   {
-    id: "3",
+    id: "4",
     title: "LimitPocket – Finance Tracker App",
     slug: "limitpocket-finance-app",
     description:
