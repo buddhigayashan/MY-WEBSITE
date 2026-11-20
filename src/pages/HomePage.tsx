@@ -4,6 +4,7 @@ import HeroSection from '../components/Home/HeroSection';
 import AboutSection from '../components/Home/AboutSection';
 import SkillsSection from '../components/Home/SkillsSection';
 import FeaturedProjects from '../components/Home/FeaturedProjects';
+import CertificationsSection from '../components/Home/CertificationsSection';
 
 const HomePage: React.FC = () => {
   return (
@@ -16,6 +17,7 @@ const HomePage: React.FC = () => {
       <AboutSection />
       <SkillsSection />
       <FeaturedProjects />
+      <CertificationsSection />
     </PageContainer>
   );
 };

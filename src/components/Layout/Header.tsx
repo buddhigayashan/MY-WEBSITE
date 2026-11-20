@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { HashLink } from "react-router-hash-link";
 import { motion, AnimatePresence } from "framer-motion";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { useTheme } from "../../context/ThemeContext";
@@ -186,6 +187,7 @@ const Header: React.FC = () => {
   const navigation = [
     { name: "Home", to: "/" },
     { name: "Projects", to: "/projects" },
+    { name: "Certifications", to: "/#certifications", hash: true },
     { name: "Resume", to: "/resume" },
     { name: "Contact", to: "/contact" },
   ];
@@ -238,17 +240,28 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
             {navigation.map((item) => (
-              <Link
-                key={item.name}
-                to={item.to}
-                className={`text-base font-semibold tracking-wide transition-all duration-200 ${
-                  location.pathname === item.to
-                    ? "text-blue-400 drop-shadow-sm"
-                    : "text-slate-300 hover:text-blue-400 hover:drop-shadow-sm"
-                }`}
-              >
-                {item.name}
-              </Link>
+              item.hash ? (
+                <HashLink
+                  key={item.name}
+                  to={item.to}
+                  smooth
+                  className="text-base font-semibold tracking-wide text-slate-300 transition-all duration-200 hover:text-blue-400 hover:drop-shadow-sm"
+                >
+                  {item.name}
+                </HashLink>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.to}
+                  className={`text-base font-semibold tracking-wide transition-all duration-200 ${
+                    location.pathname === item.to
+                      ? "text-blue-400 drop-shadow-sm"
+                      : "text-slate-300 hover:text-blue-400 hover:drop-shadow-sm"
+                  }`}
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
             <button
               onClick={toggleTheme}
@@ -311,17 +324,29 @@ const Header: React.FC = () => {
           >
             <nav className="px-6 py-4 flex flex-col space-y-3">
               {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.to}
-                  className={`text-base font-semibold px-4 py-2.5 rounded-lg transition-all duration-200 ${
-                    location.pathname === item.to
-                      ? "bg-blue-600/25 text-blue-400 shadow-md backdrop-blur-sm"
-                      : "text-slate-300 hover:bg-blue-600/20 hover:text-blue-400 hover:shadow-sm"
-                  }`}
-                >
-                  {item.name}
-                </Link>
+                item.hash ? (
+                  <HashLink
+                    key={item.name}
+                    to={item.to}
+                    smooth
+                    onClick={() => setIsMenuOpen(false)}
+                    className="rounded-lg px-4 py-2.5 text-base font-semibold text-slate-300 transition-all duration-200 hover:bg-blue-600/20 hover:text-blue-400 hover:shadow-sm"
+                  >
+                    {item.name}
+                  </HashLink>
+                ) : (
+                  <Link
+                    key={item.name}
+                    to={item.to}
+                    className={`text-base font-semibold px-4 py-2.5 rounded-lg transition-all duration-200 ${
+                      location.pathname === item.to
+                        ? "bg-blue-600/25 text-blue-400 shadow-md backdrop-blur-sm"
+                        : "text-slate-300 hover:bg-blue-600/20 hover:text-blue-400 hover:shadow-sm"
+                    }`}
+                  >
+                    {item.name}
+                  </Link>
+                )
               ))}
             </nav>
           </motion.div>

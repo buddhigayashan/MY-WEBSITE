@@ -18,3 +18,13 @@ export interface Skill {
   icon: string;
   category: 'design' | 'development' | 'other';
 }
+
+export interface Certification {
+  id: string;
+  title: string;
+  organization: string;
+  issueDate: string;
+  thumbnail: string;
+  certificateUrl: string;
+  category: string;
+}
